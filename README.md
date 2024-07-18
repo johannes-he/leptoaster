@@ -32,6 +32,27 @@ fn App() -> IntoView {
 }
 ```
 
+You can also provide it with defaults using the `ToastBuilder`. For more
+about the `ToastBuilder` see below.
+```rust
+use leptos::*;
+use leptoaster::*;
+
+#[component]
+fn App() -> IntoView {
+    provide_toaster_with_defaults(
+        ToastBuilder::default()
+            .with_expiry(Some(3_000))
+            .with_position(ToastPosition::TopRight)
+    );
+
+    view! {
+        <Toaster />
+        // your other components
+    }
+}
+```
+
 The `Toaster` component takes an optional `bool` property, `stacked` which defines whether or not the toasts should be stacked.
 ```rust
 use leptos::*;
